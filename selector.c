@@ -10,20 +10,20 @@
  * Return:
  */
 
-int selector(const char *format, f_types check[], va_list *ap)
+int selector(const char *format, f_types check[], va_list args)
 {
 	int i, j, num, printed_char;
 
 	printed_char = 0;
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == "%")
+		if (format[i] == '%')
 		{
-			for (j = 0; f_types[j].identifier != NULL; j++)
+			for (j = 0; check[j].identifier != NULL; j++)
 			{
-				if (format[i + 1] == f_types[j].identifier[0])
+				if (format[i + 1] == check[j].identifier[0])
 				{
-					num = f_types[j].type(arg_lisy);
+					num = check[j].type(args);
 					if (num == -1)
 					{
 						return (-1);
@@ -32,7 +32,7 @@ int selector(const char *format, f_types check[], va_list *ap)
 					break;
 				}
 			}
-			if (f_types[j].sym == NULL && format[i + 1] != ' ')
+			if (check[j].identifier == NULL && format[i + 1] != ' ')
 			{
 				if (format[i + 1] != '\0')
 				{
@@ -41,15 +41,16 @@ int selector(const char *format, f_types check[], va_list *ap)
 					printed_char = printed_char + 2;
 				}
 				else
-				{
 					return (-1);
-				}
+			
 			}
 			i = i + 1;
 		}
 		else
+		{
 			_putchar(format[i]);
 			printed_char++;
+		}
 	}
 	return (printed_char);
 }

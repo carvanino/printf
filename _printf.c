@@ -7,21 +7,22 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list ap;
+	va_list args;
 	int printed_char;
 	f_types check[] = {
 		{"c", print_char},
 		{"s", print_string},
 		{"%", print_percentage},
-		{"d", print_integer},
 		{"i", print_integer},
+		{"d", print_integer},
 		{NULL, NULL}
 	};
 
-	va_start(ap, format);
+	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	printed_char = selector(format, f_types, *ap);
+	printed_char = selector(format, check, args);
 
-	va_end(ap);
+	va_end(args);
 	return (printed_char);
+}

@@ -8,7 +8,7 @@
  * Return: 1 on success
  */
 
-void print_char(va_list *ap)
+int print_char(va_list ap)
 {
 	char c;
 
@@ -25,31 +25,36 @@ void print_char(va_list *ap)
  * Return: string
  */
 
-void print_string(va_list *ap)
+int print_string(va_list ap)
 {
 	char *str;
+	int i;
 
 	str = va_arg(ap, char *);
 	if (str == NULL || *str == '\0')
 	{
 		str = "(nil)";
 	}
-	return (str);
+	for (i = 0; str[i]; i++)
+	{
+		_putchar(str[i]);
+	}
+	return (i);
 }
 
 /**
- * print_int - prints an integer
+ * print_integer - prints an integer
  *
  * @ap: argument parameter
  *
  * Return: Integer
  */
 
-void print_int(va_list *ap)
+int print_integer(va_list ap)
 {
 	int i;
 
-	i = va_arg(ap, double);
+	i = print_number(ap);
 	return (i);
 }
 
@@ -61,7 +66,7 @@ void print_int(va_list *ap)
  * Return: percentage sign
  */
 
-void print_percentage(va_list *ap)
+int print_percentage(__attribute__((unused))va_list ap)
 {
 	_putchar('%');
 	return (1);
