@@ -5,9 +5,9 @@
  *
  * @format: a character specifying format
  * @check: an array containing function to be used basee on the format
- * @ap: argumment parameters to be passed into the function
+ * @args: argumment parameters to be passed into the function
  *
- * Return:
+ * Return: int
  */
 
 int selector(const char *format, f_types check[], va_list args)
@@ -42,7 +42,6 @@ int selector(const char *format, f_types check[], va_list args)
 				}
 				else
 					return (-1);
-			
 			}
 			i = i + 1;
 		}

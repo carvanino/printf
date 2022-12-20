@@ -6,7 +6,8 @@
 #include <stdarg.h>
 
 /**
- * struct format_types - This contains the identifier and pointer to the function
+ * struct format_types - This contains the identifier and pointer
+ * to the function
  * @identifier: This is the format type
  * @type: This is the function associated
  */
